@@ -1,14 +1,12 @@
-from curses import ACS_GEQUAL
-
-
-
-class Custumer:
+from class_library import Library
+class Custumer(Library):
     name = ""
     age = ""
     adress = ""
 
 
     def __init__(self, name, age, adress) -> None:
+        super().__client_list
         self.__name = name
         self.__age = age
         self.__adress = adress
@@ -37,7 +35,7 @@ class Custumer:
     def adress(self, adress):
         self.__adress = adress
     
-    
+
     def view(self):
         pass
 

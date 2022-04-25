@@ -1,12 +1,10 @@
-
-from turtle import title
-
-
-class Book:
+from class_library import Library
+class Book(Library):
     title = ""
     author = ""
     cost = ""
     def __init__(self, title, author, cost) -> None:
+        super().__list_of_availible_books
         self.__title = title
         self.__author = author 
         self.__cost = cost
