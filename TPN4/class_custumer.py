@@ -1,42 +1,26 @@
-from class_library import Library
-class Custumer(Library):
-    name = ""
-    age = ""
-    adress = ""
+class Custumer():
 
 
     def __init__(self, name, age, adress) -> None:
-        super().__client_list
         self.__name = name
         self.__age = age
-        self.__adress = adress
-
-    @property
-    def name(self):
-        return self.__name
-
-    @name.setter
-    def name(self, name):
-        self.__name = name
-
-    @property
-    def age(self):
-        return self.__age
-
-    @age.setter
-    def name(self, age):
-        self.__age = age
-
-    @property
-    def adress(self):
-        return self.__adress
-
-    @adress.setter
-    def adress(self, adress):
         self.__adress = adress
     
+    def set_name(self, name):
+        self.__name = name
 
-    def view(self):
-        pass
+    def set_age(self, age):
+        self.__age = age
 
+    def set_adress(self, adress):
+        self.__adress = adress
+
+    def get_name(self):
+        return self.__name
+
+    def get_age(self):
+        return self.__age
+    
+    def get_adress(self):
+        return self.__adress
 
