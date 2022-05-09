@@ -64,9 +64,20 @@ class Library():
 
 
     def assign(self):
-        numero_libro = input("Ingrese el numero del indice del libro que quiere adquirir:")
-        numero_cliente = input("Ingrese el cliente al cual asignar el libro:")
-        if numero_libro == self.__list_of_availible_books[0] and numero_cliente == self.__client_list[0]:
-            result = self.__client_list[numero_cliente] + self.__list_of_availible_books[numero_libro]
-            lista = [result]
-            print(lista)
+        contador = int(input("Ingrese el numero del libro a asignar:"))
+        contador1 = int(input("Ingrese el numero del cliente a asignar:"))
+        if contador:
+            print("\nEl nombre del libro: ", self.show_books(),"\n")
+            if contador1:
+                print("\nEl nombre del cliente es: ", self.show_books())
+        input("Presiona enter para volver al menu.......")
+"""     contador = 0
+        for x in self.__client_list:
+            contador = contador + 1
+            numero_libro = input("Ingrese el numero del indice del libro que quiere adquirir:")
+            numero_cliente = input("Ingrese el cliente al cual asignar el libro:")
+            if numero_libro == self.__list_of_availible_books[contador] and numero_cliente == self.__client_list[contador]:
+                result = self.__client_list[numero_cliente] + self.__list_of_availible_books[numero_libro]
+                lista = [result]
+                print(lista)
+"""
