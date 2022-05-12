@@ -2,8 +2,6 @@ from class_book import *
 from class_custumer import *
 from class_library import *
 
-
-
 def menuinicio():
     while True:
             print("Bienvenidos a la bibloteca virtual, que desea realizar")
@@ -36,11 +34,11 @@ def menuinicio():
                 libreria.view_custumers()
 
             elif choice == "7":
-                libreria.assigns()
+                libreria.assign_wach()
 
             elif choice == "8":
-                    
                 libreria.assign()
+                
             elif choice == '9':
                 print(
                     "GRACIAS POR UTILIZAR NUESTRO SERVICIO.... ESPERAMOS QUE SE HAYA PODIDO INFORMAR... HASTA LA PRÓXIMA!!")

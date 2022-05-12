@@ -1,10 +1,13 @@
-
 class Book():
 
-    def __init__(self, title, author, cost) -> None:
+    def __init__(self, id, title, author, cost) -> None:
+        self.__id = id
         self.__title = title
         self.__author = author 
         self.__cost = cost
+
+    def set_id(self, id):
+        self.__id = id
 
     def set_title(self, title):
         self.__title = title
@@ -14,6 +17,9 @@ class Book():
 
     def set_cost(self, cost):
         self.__cost = cost
+
+    def get_id(self):
+        return self.__id
 
     def get_title(self):
         return self.__title

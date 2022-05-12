@@ -1,9 +1,12 @@
+from cgi import print_form
 from class_book import *
 from class_custumer import *
 class Library():
     
     __list_of_availible_books = []
     __client_list = []
+    __diccionario_libros = {}
+    __diccionario_clientes = {}
 
     def set_lista_de_libros(self, lista):
         self.__list_of_availible_books = lista
@@ -12,72 +15,74 @@ class Library():
         self.__client_list = lista
 
     def agregar_cliente(self):
-        name = input("Ingrese su nombre completo:")
-        age = int(input("Ingrese su edad:"))
-        adress = input("Ingrese su dirección de vivienda:")
-        custumer = Custumer(name, age, adress)
-        self.__client_list.append(custumer)
-    
+        opcional = input("Desea agregar clientes si/no:")
+        while(opcional == "si"):
+            if(opcional == "si"):   
+                name = input("Ingrese su nombre completo:")
+                age = int(input("Ingrese su edad:"))
+                adress = input("Ingrese su dirección de vivienda:")
+                identificador = format(id(name))
+                custumer = Custumer(identificador, name, age, adress)
+                self.__client_list.append(custumer)
+                finalizar = input("¿Desea seguir agregando clientes a la bibloteca? si / no :")    
+                if(finalizar == "no"):
+                    input("Presiona enter para volver al menu.......")
+                    break
+
+            
     def agregar_libros(self):
-        title = input("Ingresa el titulo del libro: ")
-        author = input("Ingresa el nombre del autor: ")
-        cost = int(input("Ingresa el monto total del libro: "))
-        book = Book(title, author, cost)
-        book.set_title(title)
-        book.set_author(author)
-        book.set_cost(cost)
-        self.__list_of_availible_books.append(book)
+        opcional = input("Desea agregar libros si/no:")
+        while(opcional == "si"):
+            if(opcional == "si"): 
+                title = input("Ingresa el titulo del libro: ")
+                author = input("Ingresa el nombre del autor: ")
+                cost = int(input("Ingresa el monto total del libro: "))
+                identificador = format(id(title))
+                book = Book(identificador, title, author, cost)
+                book.set_title(title)
+                book.set_author(author)
+                book.set_cost(cost)
+                self.__list_of_availible_books.append(book)
+                finalizar = input("¿Desea seguir agregando libros a la bibloteca? si / no :")  
+                if(finalizar == "no"):
+                    input("Presiona enter para volver al menu.......")
+                    break
 
 
     def show_books(self):
-        contador = 0
         for x in self.__list_of_availible_books:
-            contador = contador + 1
-            print("\n", contador)
-            print("\nEl nombre del libro es: ", x.get_title())
+            print("ID:", x.get_id(),"\nEl nombre del libro es: ", x.get_title())
         input("Presiona enter para volver al menu.......")
 
     def view_book(self):
-        contador = 0
         for x in self.__list_of_availible_books:
-            contador = contador + 1
-            print("\n", contador)
-            print("\nEl nombre del libro es: ", x.get_title(), "\nEl autor del libro es:", x.get_author(), "\nEl precio del libro es: ", x.get_cost())
+            print("ID:", x.get_id(),"\nEl nombre del libro es: ", x.get_title(), "\nEl autor del libro es:", x.get_author(), "\nEl precio del libro es: ", x.get_cost())
         input("Presiona enter para volver al menu.......")
 
     def show_clients(self):
-        contador = 0
         for x in self.__client_list:
-            contador = contador + 1
-            print("\n", contador)
-            print("\nEl nombre del cliente es:", x.get_name())
+            print("ID:", x.get_id(),"\nEl nombre del cliente es:", x.get_name())
         input("Presiona enter para volver al menu.......")
 
     def view_custumers(self):
-        contador = 0
         for x in self.__client_list:
-            contador = contador + 1
-            print("\n", contador)
-            print("\nEl nombre del cliente es: ", x.get_name(), "\nLa edad del cliente es:", x.get_age(), "\nLa dirección de vivienda del cliente es: ", x.get_adress())
+            print("ID:", x.get_id(),"\nEl nombre del cliente es: ", x.get_name(), "\nLa edad del cliente es:", x.get_age(), "\nLa dirección de vivienda del cliente es: ", x.get_adress())
         input("Presiona enter para volver al menu.......")
 
-
+    def assign_wach(self):
+        for i in self.__client_list:
+                self.__diccionario_clientes = {"id": i.get_id(),
+                                               "Nombre del cliente": i.get_name()}
+        for x in self.__list_of_availible_books:
+                self.__diccionario_libros = {"id": x.get_id(),
+                                             "Nombre del libro": x.get_title()}
+        print(self.__diccionario_clientes)
+        print(self.__diccionario_libros)
+        nombre_cliente = input("Ingresa el numero de cliente para asociarlo al libro que requiera: ")
+        nombre_libro = input("Ingresa el numero del libro para asociarlo con el cliente: ")
+        if nombre_cliente == self.__diccionario_clientes['Nombre del cliente'] and nombre_libro == self.__diccionario_libros['Nombre del libro']:
+            self.__diccionario_clientes.update(self.__diccionario_libros)
 
     def assign(self):
-        contador = int(input("Ingrese el numero del libro a asignar:"))
-        contador1 = int(input("Ingrese el numero del cliente a asignar:"))
-        if contador:
-            print("\nEl nombre del libro: ", self.show_books(),"\n")
-            if contador1:
-                print("\nEl nombre del cliente es: ", self.show_books())
-        input("Presiona enter para volver al menu.......")
-"""     contador = 0
-        for x in self.__client_list:
-            contador = contador + 1
-            numero_libro = input("Ingrese el numero del indice del libro que quiere adquirir:")
-            numero_cliente = input("Ingrese el cliente al cual asignar el libro:")
-            if numero_libro == self.__list_of_availible_books[contador] and numero_cliente == self.__client_list[contador]:
-                result = self.__client_list[numero_cliente] + self.__list_of_availible_books[numero_libro]
-                lista = [result]
-                print(lista)
-"""
+            print(self.__diccionario_clientes)
+            input("Presiona enter para volver al menu.......")
