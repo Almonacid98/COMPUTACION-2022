@@ -73,16 +73,17 @@ class Library():
         for i in self.__client_list:
                 self.__diccionario_clientes = {"id": i.get_id(),
                                                "Nombre del cliente": i.get_name()}
+                print(self.__diccionario_clientes)
         for x in self.__list_of_availible_books:
                 self.__diccionario_libros = {"id": x.get_id(),
                                              "Nombre del libro": x.get_title()}
-        print(self.__diccionario_clientes)
-        print(self.__diccionario_libros)
+                print(self.__diccionario_libros)
         nombre_cliente = input("Ingresa el numero de cliente para asociarlo al libro que requiera: ")
         nombre_libro = input("Ingresa el numero del libro para asociarlo con el cliente: ")
         if nombre_cliente == self.__diccionario_clientes['Nombre del cliente'] and nombre_libro == self.__diccionario_libros['Nombre del libro']:
             self.__diccionario_clientes.update(self.__diccionario_libros)
-
-    def assign(self):
-            print(self.__diccionario_clientes)
             input("Presiona enter para volver al menu.......")
+    
+    def assign(self):
+        print(self.__diccionario_clientes)
+        input("Presiona enter para volver al menu.......")
